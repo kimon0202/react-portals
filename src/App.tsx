@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+
+import Modal from './components/Modal';
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="app">
+        <h1>This is the normal page!</h1>
+        <button type="button" onClick={() => setShowModal(true)}>
+          Open Modal
+        </button>
+      </div>
+      <Modal
+        show={showModal}
+        onBackdropClick={() => setShowModal(false)}
+      >
+        <div className="modal-background">
+          <h1>Hello from Portal Modal</h1>
+        </div>
+      </Modal>
+    </>
   );
 }
 
